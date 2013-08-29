@@ -1,5 +1,4 @@
 
-
 var chat = {}
 chat.fetchMessages = function ()
 {
@@ -37,10 +36,7 @@ chat.entry.bind('keydown',function(e){
 		chat.throwMessage($(this).val());
 		e.preventDefault();
 
-		var objDiv = document.getElementById("message_div");
-		//objDiv.scrollTop = objDiv.scrollHeight;
-		objDiv.scrollBottom = objDiv.style.bottom;
-		alert(objDiv.style.bottom);
+	
 
 
 	}
