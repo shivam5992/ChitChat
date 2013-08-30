@@ -17,14 +17,12 @@ class Core
 	public function rows()
 	{
 	for($x = 1; $x <= $this->db->affected_rows; $x++)
-	 {
-	 $this->rows[] = $this->result->fetch_assoc();
-	 }
-	if (empty($this->rows) === false)
 	{
+	$this->rows[] = $this->result->fetch_assoc();
+	}
+	if (empty($this->rows) === false){
 	return $this->rows;
 	}
+	}
 }
-}
-
 ?>
