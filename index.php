@@ -15,16 +15,15 @@ mysql_select_db('ajaxchat')OR die('could not select database'.mysql_error());
 		<meta name="author" content="Shivam Bansal" />
 		<link rel="stylesheet" href= "css/styles.css">
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		
 	</head>
 
 <body>
 	<header>
-<h1 align="center">Chat Application <br>Php, Ajax, Javascript, Mysql</h1>
-	</header><form action="index.php" class="cbp-mc-form" >
+		<h1 align="center">Chat Application <br>Php, Ajax, Javascript, Mysql</h1>
+	</header>
+
+	<form action="index.php" class="cbp-mc-form" >
 		<div class="cbp-mc-column" align="center">
-		
-	
 			<?php
 			 if(isset($_GET["UserName"]))
 			{
@@ -36,46 +35,40 @@ mysql_select_db('ajaxchat')OR die('could not select database'.mysql_error());
 			if($result === FALSE) {
     		die(mysql_error()); 
 			}
-
 			while($row = mysql_fetch_array($result))
 			{
-    			$_SESSION['user'] = $row[0];
+   			$_SESSION['user'] = $row[0];
     		}
 			?>
 			<br>
 			<div class="chat">
-			<div class="messages" id="message_div">
+				<div class="messages" id="message_div">
+				</div>
+				<textarea class="entry" placeholder="Use Shift+Enter for new line and Enter for send"></textarea>
 			</div>
-			<textarea class="entry" placeholder="Use Shift+Enter for new line and Enter for send"></textarea>
-			</div>
-
-			
 			<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 			<script type="text/javascript" src="js/chat.js"></script>
 			<?php
 			}
 			else{
-				?>
-				<form action="index.php">
+			?>
+			<form action="index.php">
 				<br><br><br><br><br>
 				<label for="first_name">UserName</label><input type="text" name="UserName" id="UserId" autocomplete="off" required>
 				<div class="cbp-mc-submit-wrap"><input class="cbp-mc-submit" type="submit" value="Submit" /></div>
-
-				
-				</form>
-				<?php	
+			</form>
+			<?php	
 			}
 			?>
-<div id="foot">
+		</form>
+		<div id="foot">
 			<h1 align="center">Created By Shivam Bansal <a href="index.php?truncate=true" style="text-decoration:none">.</a></h1>
-<?php
-if(isset($_GET['truncate'])){
-$myquery="truncate chat";
-$result=mysql_query($myquery); 
-}
-?>
-</div>
+				<?php
+					if(isset($_GET['truncate'])){
+						$myquery="truncate chat";
+						$result=mysql_query($myquery); 
+						}
+				?>
 		</div>
-	 </form>
-
+	</div>
 </body>
