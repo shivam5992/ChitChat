@@ -1,4 +1,3 @@
-
 var chat = {}
 chat.fetchMessages = function ()
 {
@@ -42,6 +41,10 @@ chat.entry.bind('keydown',function(e){
 	}
 });
 
-chat.interval = setInterval(chat.fetchMessages, 2000);
+chat.interval = setInterval(function(){
+    chat.fetchMessages;
+	var c = document.getElementById("message_div");
+		c.scrollTop = c.scrollHeight;
+	}, 500);
 chat.fetchMessages();
 
