@@ -1,6 +1,13 @@
 <?php
-$dbc=@mysql_connect('localhost','root','')OR die('could not connect'. mysql_error());
-mysql_select_db('ajaxchat')OR die('could not select database'.mysql_error());
+
+/**
+ * Copyright information
+ * @author Shivam Bansal <shivam5992@gmail.com>
+ * @copyright Copyright (c) 2013, Shivam Bansal
+ * @version 1.0 
+ */
+
+include "dbconnection.php";
 ?>
 
 <!DOCTYPE html>
@@ -25,49 +32,48 @@ mysql_select_db('ajaxchat')OR die('could not select database'.mysql_error());
 	<form action="index.php" class="cbp-mc-form" >
 		<div class="cbp-mc-column" align="center">
 			<?php
-			 if(isset($_GET["UserName"]))
+			if(isset($_GET["UserName"]))
 			{
-			$u = $_GET['UserName'];
-			$myquery="INSERT INTO `users` (`UserName`) values('$u')";
-			$result=mysql_query($myquery);
-			session_start();
-			$result = mysql_query("select UserId from `users` where `UserName` = '$u' ");
-			if($result === FALSE) {
-    		die(mysql_error()); 
-			}
-			while($row = mysql_fetch_array($result))
-			{
-   			$_SESSION['user'] = $row[0];
-    		}
-			?>
-			<br>
-			<div class="chat">
+				$u = $_GET['UserName'];
+				$myquery="INSERT INTO `users` (`UserName`) values('$u')";
+				$result=mysql_query($myquery);
+				session_start();
+				$result = mysql_query("select UserId from `users` where `UserName` = '$u' ");
+				if($result === FALSE) {
+    				die(mysql_error()); 
+				}
+				while($row = mysql_fetch_array($result)){
+	   			$_SESSION['user'] = $row[0];
+    				}
+				?>
+				<br>
+				<div class="chat">
 				<div class="messages" id="message_div">
 				</div>
 				<textarea class="entry" placeholder="Use Shift+Enter for new line and Enter for send"></textarea>
-			</div>
-			<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-			<script type="text/javascript" src="js/chat.js"></script>
-			<?php
-			}
-			else{
-			?>
-			<form action="index.php">
+				</div>
+				<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+				<script type="text/javascript" src="js/chat.js"></script>
+				<?php
+				}
+				else{
+				?>
+				<form action="index.php">
 				<br><br><br><br><br>
 				<label for="first_name">UserName</label><input type="text" name="UserName" id="UserId" autocomplete="off" required>
 				<div class="cbp-mc-submit-wrap"><input class="cbp-mc-submit" type="submit" value="Submit" /></div>
-			</form>
-			<?php	
-			}
-			?>
-		</form>
-		<div id="foot">
+				</form>
+				<?php	
+				}
+				?>
+				</form>
+			<div id="foot">
 			<h1 align="center">Created By Shivam Bansal <a href="index.php?truncate=true" style="text-decoration:none">.</a></h1>
-				<?php
-					if(isset($_GET['truncate'])){
-						$myquery="truncate chat";
-						$result=mysql_query($myquery); 
-						}
+			<?php
+				if(isset($_GET['truncate'])){
+					$myquery="truncate chat";
+					$result=mysql_query($myquery); 
+					}
 				?>
 		</div>
 	</div>
