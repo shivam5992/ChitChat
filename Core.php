@@ -6,8 +6,8 @@ class Core
 
 	public function __construct()
 	{
-	$this->db = new mysqli('localhost','root','','ajaxchat');
-	}
+       $this->db = new mysqli('','','','');
+		}
 
 	public function query($sql)
 	{

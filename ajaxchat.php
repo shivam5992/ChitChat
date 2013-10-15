@@ -20,10 +20,28 @@ if(isset($_POST['method']) === true && empty($_POST['method']) === false){
 		else{
 		foreach ($messages as $message){
 		?>
+
 		<div class="message" align="left" >
+		
+		<div id="name">
+
+			<?php
+				$x = explode(" ",$message['time']);
+				$y = explode(":",$x[1]);
+
+				$z = explode("-",$x[0]);
+
+
+			 	echo "<font color=red>",$z[2],"/",$z[1],",</font><font color='#E01B5D'>",$y[0],":",$y[1],"</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"; ?>
+
 		<a href=#>
-		<?php echo $message['UserName']; ?></a> &nbsp;<font color="gray">:</font>&nbsp;				
+		<?php echo $message['UserName']; ?></a> &nbsp;:
+		</div>
+
+		<div id="name_message">
 		<?php echo nl2br($message['message']); ?>
+		</div>
+
 		</div>
 		<?php
 		}
