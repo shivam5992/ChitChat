@@ -21,7 +21,6 @@ include "dbconnection.php";
 		<meta name="keywords" content="Login, Username, Web" />
 		<meta name="author" content="Shivam Bansal" />
 		<link rel="stylesheet" href= "css/styles.css">
-\
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 	</head>
 
