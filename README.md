@@ -4,7 +4,6 @@ ChitChat
 A Chat application using Php, Javascript, Ajax and SQL.
 
 
-<a href="http://shivambansal.com/ChitChat/">DEMO</a><br>
 
 
 
